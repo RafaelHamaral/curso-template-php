@@ -8,4 +8,9 @@ class LoginController
     {
         var_dump('index do login');
     }
+
+    public function store()
+    {
+        var_dump('login');
+    }
 }
