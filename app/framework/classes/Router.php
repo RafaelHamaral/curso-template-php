@@ -42,6 +42,14 @@ class Router
         // list($controller, $action) = explode('@', $routes[$this->request][$this->path]);
         [$controller, $action]= explode('@', $routes[$this->request][$this->path]);
 
+        if(str_contains($action, ':')){  //srt_contains disponivel a partir do php8
+          [$action, $auth] = explode(':', $action);
+          Auth::check($auth);
+        }
+
+        // var_dump($action);
+        // die();
+
         $controllerNamespace = "app\\controllers\\{$controller}";
 
         $this->controllerFound($controllerNamespace, $controller, $action);
