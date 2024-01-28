@@ -7,7 +7,7 @@ $dotenv->load();
 
 $connection = Connection::getConnection();
 $query = $connection->query("select * from users");
-var_dump($query->fetchAll());
+// var_dump($query->fetchAll());
 
 
 routerExecute();
