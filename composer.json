@@ -17,7 +17,9 @@
             "email": "rafael_holandamaral@hotmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
     "config":{
         "process-timeout":0
     }
