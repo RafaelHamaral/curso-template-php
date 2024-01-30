@@ -3,6 +3,7 @@
 namespace app\framework\classes;
 
 use Exception;
+use ReflectionClass;
 
 class Engine
 {
@@ -10,6 +11,7 @@ class Engine
     private ?string $layout;
     private string $content;
     private array $data;
+    private array $dependencies;
 
 
     private function load()
@@ -24,9 +26,25 @@ class Engine
     }
 
 
-    public function teste()
+    public function dependencies(array $dependencies)
     {
-        return 'teste';
+        foreach ($dependencies as $dependency){
+            $className = strtolower((new ReflectionClass($dependency))->getShortName());
+            $this->dependencies[$className] = $dependency;
+        }
+    }
+
+    public function __call(string $name, array $params)
+    {
+        if(!method_exists($this->dependencies['macros'], $name)){
+            throw new Exception("Macro {$name} does not exist");
+        }
+
+        if(empty($params)){
+            throw new Exception("Method {$name} need one parameters");
+        }
+
+        return $this->dependencies['macros']->$name($params[0]);
     }
 
     public function render(string $view, $data)
