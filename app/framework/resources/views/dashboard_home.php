@@ -2,4 +2,3 @@
 
 <h2>Home</h2>
 
-<?php echo $this->lower('RAFAEL'); ?>
