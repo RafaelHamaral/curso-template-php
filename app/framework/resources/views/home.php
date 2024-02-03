@@ -35,7 +35,7 @@
                 </div>
                 <div id="passwordContainer">
                     <label>Senha:</label>
-                    <input id="password" name="password" type="password" placeholder="Ex.: senhateste" value="123"
+                    <input id="password" name="password" type="password" placeholder="Ex.: senhateste" value="1234"
                         class="input input-dark">
                     <i data-feather="eye-off" class="iconFeather"></i>
                 </div>
